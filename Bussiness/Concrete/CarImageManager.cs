@@ -1,4 +1,6 @@
-﻿using Bussiness.Abstract;
+﻿
+
+using Bussiness.Abstract;
 using Bussiness.Constans;
 using Core.Utilities.Business;
 using Core.Utilities.Helpers.FileHelper;
@@ -9,9 +11,6 @@ using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bussiness.Concrete
 {
@@ -82,7 +81,7 @@ namespace Bussiness.Concrete
         {
 
             List<CarImage> carImage = new List<CarImage>();
-            carImage.Add(new CarImage { CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.jpg" });
+            carImage.Add(new CarImage { CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.png" });
             return new SuccessDataResult<List<CarImage>>(carImage, Messages.CarImageListed);
         }
         private IResult CheckCarImage(int carId)
