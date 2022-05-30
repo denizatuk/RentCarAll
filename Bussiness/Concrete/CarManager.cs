@@ -1,6 +1,9 @@
 ﻿using Bussiness.Abstract;
+using Bussiness.BussinesAspects.Autofac;
 using Bussiness.Constans;
 using Bussiness.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Performance;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
@@ -23,6 +26,8 @@ namespace Bussiness.Concrete
             _carDal = carDal;
         }
         [ValidationAspect(typeof(CarValidator))]
+
+        [SecuredOperation("Car.Add,Admin")]
         public IResult Add(Car car)
         {
 
@@ -31,13 +36,21 @@ namespace Bussiness.Concrete
 
 
         }
-
+        [SecuredOperation("Car.Delete,Admin")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [SecuredOperation("Car.Update,Admin")]
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
+        }
+
+        [PerformanceAspect(5)]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarListed);
@@ -58,11 +71,6 @@ namespace Bussiness.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id), Messages.CarListed);
         }
-
-        public IResult Update(Car car)
-        {
-            _carDal.Update(car);
-            return new SuccessResult(Messages.CarUpdated);
-        }
+        
     }
 }
