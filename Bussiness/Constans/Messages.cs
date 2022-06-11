@@ -27,9 +27,16 @@ namespace Bussiness.Constans
         public static string ColorUpdated = "Renk Güncellendi";
         public static string ColorDeleted = "Renk Silindi";
         public static string ColorListed = "Renkler Listelendi";
+
         public static string CarImageListed = "Araç Resimleri Listelendi";
         public static string CarImageAdded = "Araç Resimleri Eklendi";
         public static string CarImageUpdated = "Araç Resimleri Güncellendi";
+
+        public static string CustomerAdded = "Müşteri Başarıyla Kayıt Edildi";
+        public static string CustomerListed = "Müşteriler Listelendi";
+        public static string CustomerUpdated = "Müşteri Güncellendi";
+        public static string CustomerDeleted = "Müşteri Silindi";
+
         public static string UserNotFound = "Kullanıcı bulunamadı";
         public static string PasswordError = "Şifre hatalı";
         public static string SuccessfulLogin = "Sisteme giriş başarılı";
@@ -38,5 +45,10 @@ namespace Bussiness.Constans
         public static string AccessTokenCreated = "Access token başarıyla oluşturuldu";
 
         public static string AuthorizationDenied = "Yetkiniz yok";
+        public static string SuccessMessage = "İşlem Başarılı";
+        public static string ReturnRentalError="Araç Teslim Edilmeden Yeni Araç Kiralanamaz";
+        
+
+
     }
 }
