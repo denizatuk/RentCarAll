@@ -31,20 +31,23 @@ namespace Core.Utilities.Helpers.FileHelper
 
         public string Upload(IFormFile file, string root)
         {
-
-            if (!Directory.Exists(root))
+            if (file.Length>0)
             {
-                Directory.CreateDirectory(root);
+                if (!Directory.Exists(root))
+                {
+                    Directory.CreateDirectory(root);
+                }
+                string extension = Path.GetExtension(file.FileName);
+                string guid = GuidHelperr.CreateGuid();
+                string filePath = guid + extension;
+                using (FileStream fileStream = File.Create(root + filePath))
+                {
+                    file.CopyTo(fileStream);
+                    fileStream.Flush();
+                    return filePath;
+                }
             }
-            string extension = Path.GetExtension(file.FileName);
-            string guid = GuidHelperr.CreateGuid();
-            string filePath = guid + extension;
-            using (FileStream fileStream = File.Create(root + filePath))
-            {
-                file.CopyTo(fileStream);
-                fileStream.Flush();
-                return filePath;
-            }
+            return null;
 
         }
     }

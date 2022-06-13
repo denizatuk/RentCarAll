@@ -2,6 +2,8 @@
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 
+
+
 namespace DataAccess.Concrete.EntityFramework
 {
     public class CarRentalDatabaseContext : DbContext
